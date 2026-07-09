@@ -16,10 +16,12 @@ button { font-family: inherit; }
   .pah-nav-btn  { font-size: 13px !important; padding: 10px 16px !important; }
 
   /* Hero */
-  .pah-hero-content { padding: 32px 20px 40px !important; }
-  .pah-hero-grid    { grid-template-columns: 1fr !important; }
+  .pah-hero-panel   { padding: 32px 20px 32px !important; }
+  .pah-hero-grid    { grid-template-columns: 1fr !important; gap: 28px !important; }
   .pah-hero-h1      { font-size: 28px !important; max-width: 100% !important; }
-  .pah-hero-trust   { margin-top: 24px !important; }
+  .pah-hero-photo   { min-height: 260px !important; }
+  .pah-hero-trust   { left: 20px !important; bottom: 16px !important; max-width: 260px !important; }
+  .pah-hero-doctor  { object-position: center 10% !important; }
 
   /* Section padding */
   .pah-pad { padding-left: 20px !important; padding-right: 20px !important; }

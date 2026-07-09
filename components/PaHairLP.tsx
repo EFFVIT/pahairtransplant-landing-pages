@@ -289,14 +289,82 @@ export default function PaHairLP({
       </nav>
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="pah-hero" id="form" style={{
-        position: 'relative',
-        background: PANEL,
-        overflow: 'hidden',
-      }}>
-        {/* Photo layer - lower portion of hero. Real terrace background photo, with the doctor
-            cutout (transparent PNG) layered on top so the terrace shows through around him. */}
-        <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, top: '38%', overflow: 'hidden' }}>
+      <section className="pah-hero" id="form">
+        {/* Panel block - light bg, holds all the dark text + the form card.
+            This never overlaps the photo below it, so text always has contrast. */}
+        <div className="pah-hero-panel" style={{ background: PANEL, padding: '56px 64px 40px' }}>
+          <div className="pah-hero-content" style={{ maxWidth: 1400, margin: '0 auto' }}>
+            <div className="pah-hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 48, alignItems: 'start' }}>
+
+              {/* Left col - heading */}
+              <div className="pah-hero-left" style={{ paddingTop: 24 }}>
+                <h1 className="pah-hero-h1" style={{
+                  fontFamily: "'Cormorant Infant', Georgia, 'Times New Roman', serif",
+                  fontWeight: 700,
+                  fontSize: 40,
+                  textTransform: 'uppercase' as const,
+                  color: DARK,
+                  lineHeight: 1.13,
+                  marginBottom: 20,
+                  maxWidth: 620,
+                }}>
+                  Medical Evaluation for Thinning Hair &amp; Hair Loss Conditions
+                </h1>
+                <p style={{
+                  fontFamily: "'Jost', sans-serif",
+                  fontWeight: 500,
+                  fontSize: 25,
+                  color: TEXT,
+                  marginBottom: 14,
+                  lineHeight: 1.35,
+                  maxWidth: 560,
+                }}>
+                  Discover the cause of your hair loss and learn which treatment options fit your goals and hair biology.
+                </p>
+                <p style={{
+                  fontFamily: "'Jost', sans-serif",
+                  fontWeight: 400,
+                  fontSize: 18,
+                  color: TEXT,
+                  marginBottom: 0,
+                  lineHeight: 1.55,
+                  maxWidth: 560,
+                }}>
+                  Request your consultation to discuss your hair loss concerns with a licensed medical professional.
+                </p>
+              </div>
+
+              {/* Right col - form card */}
+              <div className="pah-hero-right">
+                <div style={{
+                  background: WHITE,
+                  borderRadius: 8,
+                  padding: '28px 24px 24px',
+                  width: '100%',
+                  boxShadow: '10px 10px 10.1px rgba(0,0,0,0.32)',
+                }}>
+                  <p style={{
+                    fontFamily: "'Jost', sans-serif",
+                    fontWeight: 500,
+                    fontSize: 22,
+                    color: '#1a1a1a',
+                    marginBottom: 20,
+                    textAlign: 'center',
+                    lineHeight: 1.3,
+                  }}>
+                    Request Your Evaluation
+                  </p>
+                  <GhlForm formId={heroFormId} height={400} formName="Request Your Hair Consultation - Hair Restoration Google" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Photo block - real terrace background photo, with the doctor cutout (transparent PNG)
+            layered on top so the terrace shows through around him. Sits entirely below the text
+            panel above, so nothing dark ever overlaps the photo. */}
+        <div className="pah-hero-photo" style={{ position: 'relative', minHeight: 380, overflow: 'hidden' }}>
           <img
             src="/hero-photo-bg.jpg"
             alt=""
@@ -313,90 +381,32 @@ export default function PaHairLP({
           <div style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.6) 100%)',
+            background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 55%, rgba(0,0,0,0.55) 100%)',
           }} />
-        </div>
 
-        <div className="pah-hero-content" style={{ position: 'relative', zIndex: 2, maxWidth: 1400, margin: '0 auto', padding: '56px 64px 64px' }}>
-          <div className="pah-hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 48, alignItems: 'start' }}>
-
-            {/* Left col - heading */}
-            <div className="pah-hero-left" style={{ paddingTop: 24 }}>
-              <h1 className="pah-hero-h1" style={{
-                fontFamily: "'Cormorant Infant', Georgia, 'Times New Roman', serif",
-                fontWeight: 700,
-                fontSize: 40,
-                textTransform: 'uppercase' as const,
-                color: DARK,
-                lineHeight: 1.13,
-                marginBottom: 20,
-                maxWidth: 620,
-              }}>
-                Medical Evaluation for Thinning Hair &amp; Hair Loss Conditions
-              </h1>
-              <p style={{
-                fontFamily: "'Jost', sans-serif",
-                fontWeight: 500,
-                fontSize: 25,
-                color: TEXT,
-                marginBottom: 14,
-                lineHeight: 1.35,
-                maxWidth: 560,
-              }}>
-                Discover the cause of your hair loss and learn which treatment options fit your goals and hair biology.
-              </p>
-              <p style={{
-                fontFamily: "'Jost', sans-serif",
-                fontWeight: 400,
-                fontSize: 18,
-                color: TEXT,
-                marginBottom: 0,
-                lineHeight: 1.55,
-                maxWidth: 560,
-              }}>
-                Request your consultation to discuss your hair loss concerns with a licensed medical professional.
-              </p>
-
-              {/* Trust badge sits over the photo, so keep it in the flow lower on the left col for stacked mobile layout */}
-              <div className="pah-hero-trust" style={{ marginTop: 260, display: 'flex', alignItems: 'center', gap: 14, maxWidth: 420 }}>
-                <img src="/stars-rating.png" alt="5 star rating" style={{ height: 30, width: 'auto', flexShrink: 0 }} />
-                <p style={{
-                  fontFamily: "'Jost', sans-serif",
-                  fontWeight: 600,
-                  fontSize: 16,
-                  color: WHITE,
-                  lineHeight: 1.4,
-                  margin: 0,
-                }}>
-                  Patient-Centered Care<br />
-                  <span style={{ fontWeight: 400, fontSize: 14 }}>Patients appreciate our personalized, doctor-led approach.</span>
-                </p>
-              </div>
-            </div>
-
-            {/* Right col - form card */}
-            <div className="pah-hero-right">
-              <div style={{
-                background: WHITE,
-                borderRadius: 8,
-                padding: '28px 24px 24px',
-                width: '100%',
-                boxShadow: '10px 10px 10.1px rgba(0,0,0,0.32)',
-              }}>
-                <p style={{
-                  fontFamily: "'Jost', sans-serif",
-                  fontWeight: 500,
-                  fontSize: 22,
-                  color: '#1a1a1a',
-                  marginBottom: 20,
-                  textAlign: 'center',
-                  lineHeight: 1.3,
-                }}>
-                  Request Your Evaluation
-                </p>
-                <GhlForm formId={heroFormId} height={400} formName="Request Your Hair Consultation - Hair Restoration Google" />
-              </div>
-            </div>
+          {/* Trust badge - white text is fine here since it sits over the photo intentionally */}
+          <div className="pah-hero-trust" style={{
+            position: 'absolute',
+            zIndex: 2,
+            left: 64,
+            bottom: 32,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 14,
+            maxWidth: 420,
+          }}>
+            <img src="/stars-rating.png" alt="5 star rating" style={{ height: 30, width: 'auto', flexShrink: 0 }} />
+            <p style={{
+              fontFamily: "'Jost', sans-serif",
+              fontWeight: 600,
+              fontSize: 16,
+              color: WHITE,
+              lineHeight: 1.4,
+              margin: 0,
+            }}>
+              Patient-Centered Care<br />
+              <span style={{ fontWeight: 400, fontSize: 14 }}>Patients appreciate our personalized, doctor-led approach.</span>
+            </p>
           </div>
         </div>
       </section>
