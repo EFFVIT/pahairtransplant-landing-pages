@@ -294,18 +294,26 @@ export default function PaHairLP({
         background: PANEL,
         overflow: 'hidden',
       }}>
-        {/* Photo layer - lower portion of hero */}
+        {/* Photo layer - lower portion of hero. Real terrace background photo, with the doctor
+            cutout (transparent PNG) layered on top so the terrace shows through around him. */}
         <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, top: '38%', overflow: 'hidden' }}>
           <img
-            src="/hero-bg.png"
+            src="/hero-photo-bg.jpg"
             alt=""
             aria-hidden="true"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }}
+          />
+          <img
+            src="/hero-doctor-cutout.png"
+            alt=""
+            aria-hidden="true"
+            className="pah-hero-doctor"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }}
           />
           <div style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.95) 100%)',
+            background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.6) 100%)',
           }} />
         </div>
 
