@@ -232,7 +232,7 @@ export default function PaHairLP({
       {/* ── NAV ──────────────────────────────────────────────────────────── */}
       <nav className="pah-nav" style={{
         background: WHITE,
-        height: 164,
+        height: 124,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -246,7 +246,7 @@ export default function PaHairLP({
           src="/logo-pa.webp"
           alt="Hair Restoration of Lehigh Valley"
           className="pah-nav-logo"
-          style={{ height: 84, width: 'auto', display: 'block' }}
+          style={{ height: 64, width: 'auto', display: 'block' }}
         />
         <div className="pah-nav-btns" style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
           <a
@@ -265,16 +265,17 @@ export default function PaHairLP({
               whiteSpace: 'nowrap' as const,
             }}
           >
-            Book Your Consultation
+            Request Your Consultation
           </a>
           <a
             href="tel:4842762638"
             className="pah-nav-btn"
             style={{
               background: 'transparent',
+              border: '2px solid #2e2f2a',
               color: '#2e2f2a',
               fontFamily: "'Roboto', sans-serif",
-              fontWeight: 500,
+              fontWeight: 700,
               fontSize: 18,
               textTransform: 'uppercase' as const,
               borderRadius: 62,
