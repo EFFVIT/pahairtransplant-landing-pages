@@ -1,5 +1,6 @@
 import DniSwap from '@/components/DniSwap'
 import Script from 'next/script'
+import Fab from '@/components/fab/Fab'
 import './globals.css'
 
 export const metadata = {
@@ -45,6 +46,7 @@ fbq('track', 'PageView');`,
         />
       </head>
       <body>
+        <Fab client="lehigh" />
         <DniSwap />
         <noscript>
           <iframe
