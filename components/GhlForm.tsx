@@ -45,6 +45,20 @@ export default function GhlForm({
       out.set('gclidof', gclid)
     }
 
+    // FBCLID — Meta (paid social) click id. Same discard rule as gclid (H-27):
+    // no matching hidden field → the param is dropped. Alias all three key
+    // spellings so whichever the Meta form was built with gets populated, and
+    // persist to sessionStorage so a later-step submit still carries it.
+    // Additive and inert on search pages (fbclid is only present on Meta traffic).
+    // Copied verbatim from rhrli-landing-pages GhlForm.tsx.
+    const fbclid = urlParams.get('fbclid') || sessionStorage.getItem('fbclid')
+    if (fbclid) {
+      sessionStorage.setItem('fbclid', fbclid)
+      out.set('fbclid', fbclid)
+      out.set('fbclid-of', fbclid)
+      out.set('fbclidof', fbclid)
+    }
+
     if (out.toString()) {
       setSrc(`https://api.leadconnectorhq.com/widget/form/${formId}?${out.toString()}`)
     }

@@ -71,3 +71,27 @@ button { font-family: inherit; }
 @media (max-width: 480px) {
   .pah-steps-grid { grid-template-columns: 1fr !important; }
 }
+
+/* ═══ Lehigh Meta (paid-social) /m/ pages – Responsive Overrides ═══ */
+
+@media (max-width: 768px) {
+  .lm-nav      { min-height: auto !important; padding: 14px 20px !important; flex-wrap: wrap; gap: 10px; }
+  .lm-nav-logo { height: 48px !important; }
+  .lm-nav-btns { gap: 10px !important; flex-wrap: wrap; }
+  .lm-nav-btn  { font-size: 15px !important; padding: 11px 18px !important; }
+  .lm-nav-phone { font-size: 16px !important; }
+
+  .lm-pad { padding-left: 20px !important; padding-right: 20px !important; }
+
+  .lm-hero-grid   { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .lm-two-grid    { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .lm-three-grid  { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .lm-trust-grid  { grid-template-columns: 1fr 1fr !important; }
+
+  .lm-h1 { font-size: 30px !important; max-width: 100% !important; }
+  .lm-h2 { font-size: 26px !important; }
+}
+
+@media (max-width: 480px) {
+  .lm-trust-grid { grid-template-columns: 1fr !important; }
+}
