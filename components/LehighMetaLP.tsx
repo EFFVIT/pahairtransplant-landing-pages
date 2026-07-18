@@ -162,11 +162,7 @@ export default function LehighMetaLP({
       <section className="lm-pad" style={{ background: WHITE, padding: '72px 48px' }}>
         <div className="lm-two-grid" style={{ maxWidth: 1050, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center' }}>
           <div>
-            <h2 className="lm-h2" style={{ ...h2Serif, fontSize: 34, marginBottom: 16 }}>If You&rsquo;re Going to Do This, Do It Informed</h2>
-            <p style={{ fontFamily: SANS, fontSize: 16, color: TEXT, margin: '0 0 24px', lineHeight: 1.7 }}>
-              Request your private evaluation with the {`Hair Restoration of Lehigh Valley`} medical team. No obligation,
-              no pressure&mdash;just a clear, honest picture of your options.
-            </p>
+            <h2 className="lm-h2" style={{ ...h2Serif, fontSize: 34, marginBottom: 24 }}>If You&rsquo;re Going to Do This, Do It Informed</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <a href={PHONE_HREF} style={{ color: DARK, fontFamily: SANS, fontWeight: 700, fontSize: 16, textDecoration: 'none' }}>{PHONE_DISPLAY}</a>
               <a href={`mailto:${EMAIL}`} style={{ color: DARK, fontFamily: SANS, fontWeight: 600, fontSize: 16, textDecoration: 'none' }}>{EMAIL}</a>

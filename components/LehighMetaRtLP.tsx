@@ -61,9 +61,15 @@ export default function LehighMetaRtLP({
     ? ['ARTAS®-assisted graft selection consistency (when appropriate)', 'Donor preservation-focused planning', 'Natural growth pattern placement strategy']
     : ['Precise graft selection consistency (when appropriate)', 'Donor preservation-focused planning', 'Natural growth pattern placement strategy']
 
-  const decisionList = artas
-    ? ['Proper diagnosis', 'Long-term planning', 'Ethical candidacy screening', 'Not everyone is an ideal candidate', 'Consultation exists to protect the patient first']
-    : ['Proper diagnosis', 'Long-term planning', 'Ethical candidacy screening']
+  const decisionList = ['Proper diagnosis', 'Long-term planning', 'Ethical candidacy screening']
+
+  const decisionClose = artas
+    ? 'Not everyone is an ideal candidate. Consultation exists to protect the patient first.'
+    : 'Not everyone is an ideal candidate for hair restoration treatment. Consultations exist to protect the patient first.'
+
+  const shavingClose = artas
+    ? 'Your consultation determines whether ARTAS®, manual FUE, or a hybrid approach fits your pattern.'
+    : 'Your consultation determines the best type of hair restoration procedure for your needs and whether a hybrid approach where a surgical procedure is paired with a non-surgical treatment, all designed specifically for your hair loss pattern.'
 
   const nextStep2 = artas
     ? 'Confirm best approach (ARTAS®/manual/hybrid)'
@@ -218,11 +224,13 @@ export default function LehighMetaRtLP({
                 </div>
               ))}
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 22 }}>
+            <p style={{ fontFamily: SANS, fontSize: 16, fontWeight: 600, color: DARK, margin: '0 0 10px' }}>Consultation determines:</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 18 }}>
               {['Technique', 'Shaving requirements', 'Expected outcome'].map(t => (
                 <div key={t} style={{ background: '#f8fbfa', border: '1px solid #dce8e5', borderRadius: 8, padding: '10px 12px', textAlign: 'center', fontFamily: SANS, fontSize: 13, fontWeight: 600, color: DARK }}>{t}</div>
               ))}
             </div>
+            <p style={{ fontFamily: SANS, fontSize: 15, color: TEXT, margin: '0 0 22px', lineHeight: 1.6 }}>{shavingClose}</p>
             <CtaButton href="#form">Find Out What Applies To Me</CtaButton>
           </div>
         </div>
@@ -233,7 +241,8 @@ export default function LehighMetaRtLP({
         <section className="lm-pad" style={{ background: PANEL, padding: '72px 48px' }}>
           <div className="lm-two-grid" style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
             <div>
-              <h2 className="lm-h2" style={{ ...h2Serif, fontSize: 34, marginBottom: 18 }}>Why ARTAS&reg;</h2>
+              <h2 className="lm-h2" style={{ ...h2Serif, fontSize: 34, marginBottom: 6 }}>Why ARTAS&reg;</h2>
+              <p style={{ fontFamily: SANS, fontSize: 15, fontStyle: 'italic', color: '#555', margin: '0 0 18px' }}>(when you&rsquo;re a match)</p>
               {['Assists with consistent extraction patterns', 'Supports donor-area preservation planning', 'Helps reduce human fatigue variability'].map(t => (
                 <div key={t} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 12 }}>
                   <CheckBadge size={22} />
@@ -258,6 +267,17 @@ export default function LehighMetaRtLP({
         <section className="lm-pad" style={{ background: PANEL, padding: '56px 48px', textAlign: 'center' }}>
           <div style={{ maxWidth: 820, margin: '0 auto' }}>
             <h2 className="lm-h2" style={{ ...h2Serif, fontSize: 32, marginBottom: 22 }}>Are You a Candidate For Hair Restoration?</h2>
+            <div style={{ display: 'inline-block', textAlign: 'left', marginBottom: 20 }}>
+              {['Your specific type of hair loss will be diagnosed', 'The extent of your current hair loss'].map(t => (
+                <div key={t} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 12 }}>
+                  <CheckBadge size={22} />
+                  <span style={{ fontFamily: SANS, fontSize: 16, color: TEXT }}>{t}</span>
+                </div>
+              ))}
+            </div>
+            <p style={{ fontFamily: SANS, fontSize: 16, color: DARK, fontWeight: 600, margin: '0 auto 24px', maxWidth: 620, lineHeight: 1.6 }}>
+              Hair restoration isn&rsquo;t for everyone&mdash;your candidacy determines the best method.
+            </p>
             <CtaButton href="#final-form">See If I&rsquo;m a Candidate</CtaButton>
           </div>
         </section>
@@ -278,6 +298,7 @@ export default function LehighMetaRtLP({
                 <h3 style={{ fontFamily: SANS, fontSize: 18, fontWeight: 600, color: DARK, margin: '6px 0 0', lineHeight: 1.4 }}>{t}</h3>
               </div>
             ))}
+            <p style={{ fontFamily: SANS, fontSize: 15, fontWeight: 600, color: DARK, margin: '4px 0 0' }}>Consult: ~30 minutes &bull; Plan delivered same day</p>
           </div>
           <div style={{ borderRadius: 12, overflow: 'hidden' }}>
             <img src="/img/m/consult.webp" alt="Patient during a hair loss consultation" style={{ width: '100%', display: 'block' }} />
@@ -292,13 +313,15 @@ export default function LehighMetaRtLP({
             <img src="/img/m/denim.webp" alt="Hair restoration patient" style={{ width: '100%', display: 'block' }} />
           </div>
           <div>
-            <h2 className="lm-h2" style={{ ...h2Serif, fontSize: 34, marginBottom: 22 }}>Hair Restoration Is a Medical Decision</h2>
+            <h2 className="lm-h2" style={{ ...h2Serif, fontSize: 34, marginBottom: 16 }}>Hair Restoration Is a Medical Decision</h2>
+            <p style={{ fontFamily: SANS, fontSize: 16, fontWeight: 600, color: DARK, margin: '0 0 14px' }}>Results depend on:</p>
             {decisionList.map(t => (
               <div key={t} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 12 }}>
                 <CheckBadge size={22} />
                 <span style={{ fontFamily: SANS, fontSize: 16, color: TEXT }}>{t}</span>
               </div>
             ))}
+            <p style={{ fontFamily: SANS, fontSize: 15, color: TEXT, margin: '14px 0 0', lineHeight: 1.6 }}>{decisionClose}</p>
             <div style={{ marginTop: 24 }}>
               <CtaButton href="#final-form">Schedule a Consultation</CtaButton>
             </div>
