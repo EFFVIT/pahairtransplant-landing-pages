@@ -45,7 +45,16 @@ export type FabIcon =
   | "file-text";
 
 export type FabActionType = "url" | "phone" | "ghl_chat" | "scroll";
-export type FabAvatarMode = "wave" | "initials" | "image";
+export type FabAvatarMode = "wave" | "initials" | "image" | "icon";
+// Motion applied to the collapsed avatar when avatar_mode === "icon". Lets each
+// site carry a distinct animated glyph instead of the shared waving hand.
+export type FabAvatarAnimation =
+  | "pulse"
+  | "bounce"
+  | "heartbeat"
+  | "swing"
+  | "spin"
+  | "float";
 export type FabPosition = "bottom-right" | "bottom-left";
 
 // How a `phone` action resolves the number it dials:
@@ -82,6 +91,8 @@ export interface FabConfig {
   avatar_mode: FabAvatarMode;
   avatar_initials: string; // <=2 chars
   avatar_image_url: string;
+  avatar_icon: FabIcon; // glyph shown when avatar_mode === "icon"
+  avatar_animation: FabAvatarAnimation; // motion for the "icon" avatar
   attention_pulse: boolean;
   attention_bounce: boolean;
   attention_random_bounce: boolean;
@@ -131,7 +142,27 @@ export const FAB_ALLOWED_AVATAR_MODES: FabAvatarMode[] = [
   "wave",
   "initials",
   "image",
+  "icon",
 ];
+
+export const FAB_ALLOWED_AVATAR_ANIMATIONS: FabAvatarAnimation[] = [
+  "pulse",
+  "bounce",
+  "heartbeat",
+  "swing",
+  "spin",
+  "float",
+];
+
+// Human labels for the admin avatar-animation <select>.
+export const FAB_AVATAR_ANIMATION_LABELS: Record<FabAvatarAnimation, string> = {
+  pulse: "Pulse",
+  bounce: "Bounce",
+  heartbeat: "Heartbeat",
+  swing: "Swing",
+  spin: "Spin",
+  float: "Float",
+};
 
 export const FAB_ALLOWED_PHONE_SOURCES: FabPhoneSource[] = [
   "config",
@@ -244,6 +275,8 @@ export function fabDefaultConfig(): FabConfig {
     avatar_mode: "wave",
     avatar_initials: "Dr",
     avatar_image_url: "",
+    avatar_icon: "message-circle",
+    avatar_animation: "pulse",
     attention_pulse: true,
     attention_bounce: true,
     attention_random_bounce: false,
@@ -379,6 +412,14 @@ export function sanitizeFabConfig(input: unknown): FabConfig {
     avatar_mode,
     avatar_initials: str(i.avatar_initials, 2) || d.avatar_initials,
     avatar_image_url: safeUrl(i.avatar_image_url),
+    avatar_icon: FAB_ALLOWED_ICONS.includes(i.avatar_icon as FabIcon)
+      ? (i.avatar_icon as FabIcon)
+      : d.avatar_icon,
+    avatar_animation: FAB_ALLOWED_AVATAR_ANIMATIONS.includes(
+      i.avatar_animation as FabAvatarAnimation
+    )
+      ? (i.avatar_animation as FabAvatarAnimation)
+      : d.avatar_animation,
     attention_pulse: bool(i.attention_pulse),
     attention_bounce: bool(i.attention_bounce),
     attention_random_bounce: bool(i.attention_random_bounce),
@@ -425,6 +466,8 @@ export interface FabFrontendPayload {
   avatarMode: FabAvatarMode;
   avatarInitials: string;
   avatarImageUrl: string;
+  avatarIcon: FabIcon;
+  avatarAnimation: FabAvatarAnimation;
   attentionPulse: boolean;
   attentionBounce: boolean;
   attentionRandomBounce: boolean;
@@ -468,6 +511,8 @@ export function toFrontendPayload(config: FabConfig): FabFrontendPayload {
     avatarMode: config.avatar_mode,
     avatarInitials: config.avatar_initials,
     avatarImageUrl: config.avatar_image_url,
+    avatarIcon: config.avatar_icon,
+    avatarAnimation: config.avatar_animation,
     attentionPulse: config.attention_pulse,
     attentionBounce: config.attention_bounce,
     attentionRandomBounce: config.attention_random_bounce,

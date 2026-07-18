@@ -151,6 +151,20 @@ function styleText(): string {
 .effvit-cl-avatar-inner{position:relative;z-index:1;width:100%;height:100%;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .effvit-cl-avatar-img{width:100%;height:100%;object-fit:cover}
 .effvit-cl-avatar-initials{font-size:20px;font-weight:700;letter-spacing:.02em;color:var(--nsw-on-accent);text-transform:uppercase}
+.effvit-cl-avatar-icon{display:flex;align-items:center;justify-content:center;width:30px;height:30px;color:var(--nsw-on-accent)}
+.effvit-cl-avatar-icon svg{width:30px;height:30px}
+.effvit-cl-anim-pulse{animation:effvit-cl-ap 2.4s ease-in-out infinite}
+@keyframes effvit-cl-ap{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+.effvit-cl-anim-bounce{animation:effvit-cl-ab 2.8s cubic-bezier(.28,.84,.42,1) infinite}
+@keyframes effvit-cl-ab{0%,55%,100%{transform:translateY(0)}67%{transform:translateY(-6px)}80%{transform:translateY(0)}90%{transform:translateY(-3px)}}
+.effvit-cl-anim-heartbeat{animation:effvit-cl-ah 1.9s ease-in-out infinite}
+@keyframes effvit-cl-ah{0%,100%{transform:scale(1)}12%{transform:scale(1.18)}24%{transform:scale(1)}36%{transform:scale(1.12)}48%{transform:scale(1)}}
+.effvit-cl-anim-swing{transform-origin:50% 18%;animation:effvit-cl-as 3s ease-in-out infinite}
+@keyframes effvit-cl-as{0%,70%,100%{transform:rotate(0)}78%{transform:rotate(14deg)}86%{transform:rotate(-10deg)}94%{transform:rotate(6deg)}}
+.effvit-cl-anim-spin{animation:effvit-cl-asp 3.4s linear infinite}
+@keyframes effvit-cl-asp{to{transform:rotate(360deg)}}
+.effvit-cl-anim-float{animation:effvit-cl-af 3.4s ease-in-out infinite}
+@keyframes effvit-cl-af{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .effvit-cl-wave{font-size:30px;line-height:1;transform-origin:70% 70%;animation:effvit-cl-wave 3.4s ease-in-out infinite}
 @keyframes effvit-cl-wave{0%,14%,86%,100%{transform:rotate(0)}22%{transform:rotate(20deg)}30%{transform:rotate(-12deg)}38%{transform:rotate(18deg)}46%{transform:rotate(-8deg)}54%{transform:rotate(12deg)}62%{transform:rotate(0)}}
 .effvit-cl-pulse-ring{position:absolute;inset:0;border-radius:50%;background:var(--nsw-accent);pointer-events:none;animation:effvit-cl-pulse 4s cubic-bezier(.4,0,.6,1) infinite}
@@ -171,7 +185,7 @@ function styleText(): string {
 .effvit-cl-chip-icon{display:flex;align-items:center;justify-content:center;flex:none}
 .effvit-cl-chip-icon svg{width:18px;height:18px}
 .effvit-cl-chip-label{white-space:nowrap}
-@media(prefers-reduced-motion:reduce){.effvit-cl-wave,.effvit-cl-pulse-ring,.effvit-cl-bounce-once{animation:none}}
+@media(prefers-reduced-motion:reduce){.effvit-cl-wave,.effvit-cl-pulse-ring,.effvit-cl-bounce-once,.effvit-cl-avatar-icon[class*="effvit-cl-anim-"]{animation:none}}
 @media(max-width:480px){.effvit-cl-card{max-width:90vw}}
 `;
 }
@@ -306,6 +320,17 @@ function render(cfg: FabFrontendPayload): HTMLElement | null {
     ini.className = "effvit-cl-avatar-initials";
     ini.textContent = (cfg.avatarInitials || "Dr").slice(0, 2);
     inner.appendChild(ini);
+  } else if (cfg.avatarMode === "icon") {
+    // A line-icon glyph on the accent circle, with a per-site animation. Lets each
+    // site carry a distinct animated icon instead of the shared waving hand.
+    const glyph = document.createElement("span");
+    glyph.className =
+      "effvit-cl-avatar-icon effvit-cl-anim-" + (cfg.avatarAnimation || "pulse");
+    glyph.setAttribute("aria-hidden", "true");
+    glyph.innerHTML = svgIcon(
+      FAB_ICON_PATHS[cfg.avatarIcon] || FAB_ICON_PATHS["message-circle"]
+    );
+    inner.appendChild(glyph);
   } else {
     const wave = document.createElement("span");
     wave.className = "effvit-cl-wave";
