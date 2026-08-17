@@ -111,6 +111,11 @@ export const CONSULT = {
    TO FIX: mint a PIT for this sub-account with locations/customFields readonly,
    then regenerate this map FROM THE API — never by copying RHRLI's. */
 export const CONSULT_FIELD_MAP: Record<string, string> = {
+  /* This field did NOT exist on this sub-account and was CREATED in the RootLogic UI
+     on 2026-08-17 (Joe's direction): name 'Gclid-Of', Single line, on the Contact
+     object, in the Contact folder — replicated field-for-field from a client that
+     already had a working one, then verified by API to resolve to contact.gclidof. */
+  gclid: 'contact.gclidof',
   utm_source: 'contact.utm_source',
   utm_medium: 'contact.utm_medium',
   utm_campaign: 'contact.utm_campaign',
@@ -118,15 +123,8 @@ export const CONSULT_FIELD_MAP: Record<string, string> = {
   utm_content: 'contact.utm_content',
 
   /* NOT MAPPED, because no field with these keys exists on this sub-account:
-     gclid, wbraid, gbraid, keyword, matchtype, fbclid, msclkid, campaignid, adgroupid.
+     wbraid, gbraid, keyword, matchtype, fbclid, msclkid, campaignid, adgroupid.
      Captured on the page and dropped at the CRM boundary rather than written to a
      guessed key — a PUT with an unresolvable fieldKey returns 200 and silently
-     discards the value, which reads as working (H-41).
-     *** NO GCLID FIELD EXISTS ON THIS SUB-ACCOUNT. *** Only UTMs can be stored.
-     The click id is still captured on the page and posted to /api/consult/book,
-     but there is nowhere on the contact record to put it, so Google Ads offline
-     conversions cannot be matched back for this client. Creating a `Gclid-of`
-     custom field here is additive and inert, and it needs
-     locations/customFields.WRITE, which this token deliberately does not have.
-  */
+     discards the value, which reads as working (H-41). */
 }
