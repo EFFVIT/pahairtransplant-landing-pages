@@ -14,7 +14,7 @@
    schema.org wins.
 
    NOTE FOR THIS CLIENT:
-   Palette STYLES dark olive #2c2e2b + orange #fc742a. The raw orange fails text contrast on the pale-aqua ground, so text/focus use a darkened #B84A12; the brand orange stays as the button hover. ALSO: this repo's MetaPixel gates only /m/, so a /c/ route would have loaded the pixel on a health-intent form page. The gate is extended to /c/ by this install (H-26 / §6 FM7).
+   Palette STYLES dark olive #2c2e2b + orange #fc742a. The raw orange fails text contrast on the pale-aqua ground, so text/focus use a darkened #B84A12; the brand orange stays as the button hover. ALSO: this repo's MetaPixel gates only /m/, so a /c/ route would have loaded the pixel on a health-intent form page. The gate is extended to /c/ by this install (H-26 / §6 FM7). CALENDARS STAY AT 30 MINUTES: Joe directed 60min pairs for the three short-calendar clients on 2026-08-17, and it was done for Mollura and LA FUE. It could NOT be done here — this sub-account's PIT reads calendars fine (200) but answers 401 'not authorized for this scope' on both create and update, confirmed three times with spacing, so it is a real write-scope gap on the token and not a transient. Mint a PIT with calendars.write for this location, create the 60min pair mirroring the existing hours, then flip cal_inperson/cal_virtual/duration_minutes here.
    ========================================================================== */
 
 export const CONSULT = {
