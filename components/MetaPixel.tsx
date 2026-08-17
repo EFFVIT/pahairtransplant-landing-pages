@@ -3,14 +3,24 @@ import Script from 'next/script'
 import { usePathname } from 'next/navigation'
 
 // Meta Pixel gated by route. HIPAA carve-out (H-26 / §6 failure mode 7):
-// the /m/ paid-social pages are medical consult/form pages with health intent,
-// so NO browser Meta Pixel loads there — attribution rides server-side CAPI.
-// Every other route keeps the pixel exactly as before (unchanged behavior).
+// health-intent consult/form pages are medical pages, so NO browser Meta Pixel
+// loads there — attribution rides server-side CAPI. Meta will not sign a BAA.
+//
+// /c/ ADDED 2026-08-17. The gate previously named only /m/, which was correct
+// for the routes that existed when it was written and silently wrong the moment
+// a consult route was added: /c/consult collects a name, email, mobile, a
+// Norwood/Ludwig selection and a prior-procedure answer, and would have loaded
+// this pixel over all of it. The sibling /c/ routes on this app are the same
+// shape — consult and evaluation form pages — so the gate covers the prefix
+// rather than one path, which is the direction that cannot hide a violation.
+// This suppresses a pixel on medical pages; it can only ever reduce exposure.
 const PIXEL_ID = '509801668226244'
+
+const HEALTH_INTENT = ['/m', '/c']
 
 export default function MetaPixel() {
   const pathname = usePathname() || ''
-  if (pathname.startsWith('/m/') || pathname === '/m') return null
+  if (HEALTH_INTENT.some((p) => pathname === p || pathname.startsWith(p + '/'))) return null
 
   return (
     <>
