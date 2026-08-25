@@ -428,15 +428,25 @@ function render(cfg: FabFrontendPayload): HTMLElement | null {
 
 // Mounts the FAB: fetches config for `client`, renders into document.body.
 // Returns a cleanup function that removes the widget. Safe to call once per page.
+// No upstream timeout previously guarded this call (86bbkhdxf) — a slow or
+// hanging control.effvit.com response left the fetch pending indefinitely,
+// which real-user-monitoring tools that wait for network-idle would report
+// as an enormous "page load" time even though window.load already fired.
+// Mirrors the 2.5s abort guard DniSwap already uses for the same origin.
+const FAB_CONFIG_TIMEOUT_MS = 2500;
+
 export async function mountFab(opts: MountFabOptions): Promise<() => void> {
   const origin = opts.controlOrigin || DEFAULT_ORIGIN;
   enforceGhlIdleHidden();
 
   let cfg: FabFrontendPayload;
   try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), FAB_CONFIG_TIMEOUT_MS);
     const res = await fetch(`${origin}/api/fab-config/${encodeURIComponent(opts.client)}`, {
       credentials: "omit",
-    });
+      signal: ctrl.signal,
+    }).finally(() => clearTimeout(timer));
     if (!res.ok) return () => {};
     cfg = (await res.json()) as FabFrontendPayload;
   } catch {
