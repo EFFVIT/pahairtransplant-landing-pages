@@ -30,16 +30,29 @@ const GA_ID = 'G-X7G76K0WMF'
    one for GA4. Server-side delivery would not launder it either (H-32) — the
    restriction follows the data, not the pipe.
 
-   SCOPE IS DELIBERATELY NARROW: this suppresses the tag on the consult route
-   ONLY. It does not change any existing page. The wider question — that this
-   app also runs GA4 on its other /c/ and /m/ consult and evaluation form
-   pages, which are the same shape — is a real finding and is Joe's call, with
-   the RHRLI precedent being that he directed GTM removed from the landing
-   pages fleet-wide on 2026-08-15. Do not widen this gate without that call.
+   WIDENED 2026-08-25 TO THE WHOLE /c PREFIX, on Joe's explicit call. The
+   paragraph this replaces asked for exactly that call and said not to widen
+   without it; the call has now been made, and this is the record of it.
+
+   What forced it: the fixed LP QA checker re-ran this app on 2026-08-25 and
+   found GA4 firing live on /c/evaluation, /c/hair-restoration and
+   /c/hair-transplant. Every one of them mounts a GHL consult form, so the /c
+   prefix and the health-intent set are the same set. PNW had already been
+   widened this way on 2026-08-24; this app and its sibling were missed, and
+   they then accumulated new /c routes that the narrow gate never covered.
+
+   Gating the PREFIX rather than listing routes is deliberate: a route gate
+   written against the routes that existed the day it was written goes silently
+   wrong the moment a route is added (H-45), which is precisely what happened
+   here. Adding a /c route no longer requires remembering this file.
+
+   Suppressing a tag on a medical page can only ever reduce exposure, so this
+   edit cannot hide a violation. Widening it back is a separate decision and
+   belongs to Joe (H-43).
 
    Suppressing a tag on a medical page can only ever reduce exposure, so this
    edit cannot hide a violation. */
-const HEALTH_INTENT_ROUTES = ['/c/consult']
+const HEALTH_INTENT_ROUTES = ['/c']
 const isHealthIntent = (p: string) =>
   HEALTH_INTENT_ROUTES.some((r) => p === r || p.startsWith(r + '/'))
 
