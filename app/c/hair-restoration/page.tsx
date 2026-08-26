@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function HairRestorationPage() {
   return (
     <>
-      <MedicalBusinessSchema pageUrl="https://schedule.pahairtransplant.com/c/hair-restoration" />
+      <MedicalBusinessSchema />
       <PaHairLP
         heroFormId="SmOTe9GS6e3ZlXAKRIK1"
         bottomFormId="R0qQX7D7Xcagmd5xl26d"
