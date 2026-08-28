@@ -1,5 +1,6 @@
 'use client'
 import { Suspense, useState } from 'react'
+import Image from 'next/image'
 import GhlForm from './GhlForm'
 import GclidCapture from './GclidCapture'
 
@@ -404,12 +405,16 @@ export default function PaHairLP({
             aria-hidden="true"
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }}
           />
-          <img
+          <Image
             src="/hero-doctor-cutout.png"
             alt=""
             aria-hidden="true"
             className="pah-hero-doctor"
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }}
+            fill
+            priority
+            quality={80}
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
           />
           <div style={{
             position: 'absolute',
@@ -671,10 +676,14 @@ export default function PaHairLP({
 
             {/* Photo — LEFT */}
             <div style={{ borderRadius: 5, overflow: 'hidden', flexShrink: 0, background: DARK }}>
-              <img
+              <Image
                 src="/dr-bio.png"
                 alt="Dr. Nish Patel - Hair Restoration of Lehigh Valley"
-                style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+                width={412}
+                height={634}
+                quality={80}
+                sizes="(max-width: 768px) 100vw, 40vw"
+                style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
               />
             </div>
 
@@ -892,12 +901,15 @@ export default function PaHairLP({
           </div>
 
           {/* Right — photo */}
-          <div className="pah-fin-photo" style={{ borderRadius: 5, overflow: 'hidden', height: 620 }}>
-            <img
+          <div className="pah-fin-photo" style={{ position: 'relative', borderRadius: 5, overflow: 'hidden', height: 620 }}>
+            <Image
               src="/financing-photo.png"
               alt=""
               aria-hidden="true"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+              fill
+              quality={75}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ objectFit: 'cover', objectPosition: 'center top' }}
             />
           </div>
 
@@ -990,10 +1002,13 @@ export default function PaHairLP({
 
             {/* Map — LEFT */}
             <div className="pah-map-col" style={{ position: 'relative', borderRadius: 12, overflow: 'hidden', minHeight: 320 }}>
-              <img
+              <Image
                 src="/footer-map.png"
                 alt="Hair Restoration of Lehigh Valley location map"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                fill
+                quality={75}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
               />
               {/* Visit Our Practice badge */}
               <div style={{
