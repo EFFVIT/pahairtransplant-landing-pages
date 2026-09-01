@@ -6,6 +6,7 @@
 // control edits go live within seconds with no redeploy. Renders nothing itself.
 import { useEffect } from "react";
 import { mountFab } from "./fab-widget";
+import { onIdle } from "@/lib/onIdle";
 
 export default function Fab({
   client,
@@ -17,9 +18,15 @@ export default function Fab({
   useEffect(() => {
     let cleanup: (() => void) | undefined;
     let cancelled = false;
-    mountFab({ client, controlOrigin }).then((fn) => {
-      if (cancelled) fn();
-      else cleanup = fn;
+    // The widget's config fetch + shadow-DOM build is real main-thread work
+    // that adds nothing to first paint, so it's deferred to idle time to keep
+    // it out of the FCP-to-TTI window that Total Blocking Time measures.
+    onIdle(() => {
+      if (cancelled) return;
+      mountFab({ client, controlOrigin }).then((fn) => {
+        if (cancelled) fn();
+        else cleanup = fn;
+      });
     });
     return () => {
       cancelled = true;

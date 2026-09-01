@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { onIdle } from '@/lib/onIdle'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // EFFVIT canonical GHL form embed. Do not fork this per client.
@@ -45,18 +46,20 @@ const DEFAULT_HOST = 'api.leadconnectorhq.com'
 
 // form_embed.js processes every form iframe present when it runs, so one
 // injection covers a page with several forms. Components mount in the same
-// commit; the short delay lets them all settle before the script lands.
+// commit, well before idle fires, so waiting for idle time still lets them
+// all settle before the script lands — and keeps its parse/exec cost out of
+// the FCP-to-TTI window that Total Blocking Time measures.
 let embedScheduled = false
 function injectFormEmbedOnce() {
   if (embedScheduled) return
   embedScheduled = true
-  setTimeout(() => {
+  onIdle(() => {
     if (document.querySelector(`script[src="${FORM_EMBED_SRC}"]`)) return
     const s = document.createElement('script')
     s.src = FORM_EMBED_SRC
     s.async = true
     document.body.appendChild(s)
-  }, 50)
+  }, 1500)
 }
 
 export default function GhlForm({
