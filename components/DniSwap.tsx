@@ -1,5 +1,6 @@
 'use client'
 import { useEffect } from 'react'
+import { onIdle } from '@/lib/onIdle'
 
 // Session-level dynamic number insertion. Paid sessions (gclid/gbraid/wbraid
 // present) lease a tracking number from control.effvit.com and every visible
@@ -77,51 +78,57 @@ export default function DniSwap() {
         } catch { /* ignore */ }
       }
 
-      const utm: Record<string, string> = {}
-      for (const k of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']) {
-        const v = params.get(k) ?? sessionStorage.getItem(k)
-        if (v) { utm[k] = v; sessionStorage.setItem(k, v) }
-      }
+      // The lease refresh (network round trip + a body-wide MutationObserver)
+      // isn't needed for first paint — the cached swap above already handled
+      // that — so it's deferred to idle time to stay out of the FCP-to-TTI
+      // window that Total Blocking Time measures.
+      onIdle(() => {
+        const utm: Record<string, string> = {}
+        for (const k of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']) {
+          const v = params.get(k) ?? sessionStorage.getItem(k)
+          if (v) { utm[k] = v; sessionStorage.setItem(k, v) }
+        }
 
-      const ctrl = new AbortController()
-      const timer = setTimeout(() => ctrl.abort(), 2500)
-      fetch(DNI_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          client: CLIENT,
-          sessionKey,
-          gclid, gbraid, wbraid,
-          utm,
-          page: window.location.pathname,
-        }),
-        signal: ctrl.signal,
-      })
-        .then((r) => r.json())
-        .then(({ lease }) => {
-          if (lease?.number) {
-            sessionStorage.setItem('dni_lease', JSON.stringify({
-              number: lease.number,
-              exp: Date.now() + (lease.ttlSeconds ?? 1800) * 1000,
-            }))
-            swapNumber(lease.number)
-            // React re-renders (accordions, carousels) restore the static
-            // number from their own props — watch and re-apply. The swap is
-            // idempotent (swapped text no longer matches), so the observer
-            // can't loop on its own mutations.
-            let pending: number | null = null
-            const observer = new MutationObserver(() => {
-              if (pending) return
-              pending = window.setTimeout(() => {
-                pending = null
-                swapNumber(lease.number)
-              }, 250)
-            })
-            observer.observe(document.body, { childList: true, subtree: true, characterData: true })
-          }
+        const ctrl = new AbortController()
+        const timer = setTimeout(() => ctrl.abort(), 2500)
+        fetch(DNI_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            client: CLIENT,
+            sessionKey,
+            gclid, gbraid, wbraid,
+            utm,
+            page: window.location.pathname,
+          }),
+          signal: ctrl.signal,
         })
-        .catch(() => { /* static number stays — correct fallback */ })
-        .finally(() => clearTimeout(timer))
+          .then((r) => r.json())
+          .then(({ lease }) => {
+            if (lease?.number) {
+              sessionStorage.setItem('dni_lease', JSON.stringify({
+                number: lease.number,
+                exp: Date.now() + (lease.ttlSeconds ?? 1800) * 1000,
+              }))
+              swapNumber(lease.number)
+              // React re-renders (accordions, carousels) restore the static
+              // number from their own props — watch and re-apply. The swap is
+              // idempotent (swapped text no longer matches), so the observer
+              // can't loop on its own mutations.
+              let pending: number | null = null
+              const observer = new MutationObserver(() => {
+                if (pending) return
+                pending = window.setTimeout(() => {
+                  pending = null
+                  swapNumber(lease.number)
+                }, 250)
+              })
+              observer.observe(document.body, { childList: true, subtree: true, characterData: true })
+            }
+          })
+          .catch(() => { /* static number stays — correct fallback */ })
+          .finally(() => clearTimeout(timer))
+      }, 1500)
     } catch { /* never break the page */ }
   }, [])
 
