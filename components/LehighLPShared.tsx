@@ -11,9 +11,9 @@ export const PANEL = '#ebf4f4'
 export const WHITE = '#ffffff'
 export const TEXT = '#2c2e2b'
 
-export const SERIF = "'Cormorant Infant', Georgia, 'Times New Roman', serif"
-export const SANS = "'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-export const BTN = "'Roboto', sans-serif"
+export const SERIF = "var(--font-cormorant), Georgia, 'Times New Roman', serif"
+export const SANS = "var(--font-jost), -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+export const BTN = "var(--font-roboto), sans-serif"
 
 // Paid-social DNI number used on the start.pahairtransplant.com /meta* pages.
 export const PHONE_DISPLAY = '484-917-5141'
