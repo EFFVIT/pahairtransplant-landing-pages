@@ -405,6 +405,7 @@ export default function PaHairLP({
             aria-hidden="true"
             fill
             priority
+            fetchPriority="high"
             quality={80}
             sizes="100vw"
             style={{ objectFit: 'cover', objectPosition: 'center center' }}
@@ -416,6 +417,7 @@ export default function PaHairLP({
             className="pah-hero-doctor"
             fill
             priority
+            fetchPriority="high"
             quality={80}
             sizes="100vw"
             style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
