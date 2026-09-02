@@ -193,7 +193,7 @@ function FaqSection() {
     <section className="pah-pad" style={{ background: WHITE, padding: '80px 48px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <h2 className="pah-h2-xl" style={{
-          fontFamily: "'Cormorant Infant', Georgia, serif",
+          fontFamily: "var(--font-cormorant), Georgia, serif",
           fontWeight: 700,
           fontSize: 40,
           lineHeight: 1.129,
@@ -226,14 +226,14 @@ function FaqSection() {
                   }}
                   aria-expanded={isOpen}
                 >
-                  <span style={{ fontFamily: "'Jost', sans-serif", fontSize: 16, fontWeight: 600, color: TEXT, lineHeight: 1.35 }}>{item.q}</span>
+                  <span style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: 16, fontWeight: 600, color: TEXT, lineHeight: 1.35 }}>{item.q}</span>
                   <span style={{ fontSize: 24, fontWeight: 300, color: DARK, flexShrink: 0, lineHeight: 1 }}>
                     {isOpen ? '−' : '+'}
                   </span>
                 </button>
                 {isOpen && (
                   <div style={{ background: '#f4faf9', padding: '20px 28px 24px', borderRadius: '0 0 16px 16px' }}>
-                    <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 15, lineHeight: 1.7, color: '#444', margin: 0 }}>{item.a}</p>
+                    <p style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: 15, lineHeight: 1.7, color: '#444', margin: 0 }}>{item.a}</p>
                   </div>
                 )}
               </div>
@@ -259,7 +259,7 @@ export default function PaHairLP({
   bottomFormId = 'R0qQX7D7Xcagmd5xl26d',
 }: Props) {
   return (
-    <div style={{ fontFamily: "'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif", color: TEXT }}>
+    <div style={{ fontFamily: "var(--font-jost), -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif", color: TEXT }}>
       <Suspense fallback={null}><GclidCapture /></Suspense>
 
       {/* ── NAV ──────────────────────────────────────────────────────────── */}
@@ -288,7 +288,7 @@ export default function PaHairLP({
             style={{
               background: ORANGE,
               color: '#000',
-              fontFamily: "'Roboto', sans-serif",
+              fontFamily: "var(--font-roboto), sans-serif",
               fontWeight: 500,
               fontSize: 18,
               textTransform: 'uppercase' as const,
@@ -307,7 +307,7 @@ export default function PaHairLP({
               background: 'transparent',
               border: '2px solid #2e2f2a',
               color: '#2e2f2a',
-              fontFamily: "'Roboto', sans-serif",
+              fontFamily: "var(--font-roboto), sans-serif",
               fontWeight: 700,
               fontSize: 18,
               textTransform: 'uppercase' as const,
@@ -333,7 +333,7 @@ export default function PaHairLP({
               {/* Left col - heading */}
               <div className="pah-hero-left" style={{ paddingTop: 24 }}>
                 <h1 className="pah-hero-h1" style={{
-                  fontFamily: "'Cormorant Infant', Georgia, 'Times New Roman', serif",
+                  fontFamily: "var(--font-cormorant), Georgia, 'Times New Roman', serif",
                   fontWeight: 700,
                   fontSize: 40,
                   textTransform: 'uppercase' as const,
@@ -345,7 +345,7 @@ export default function PaHairLP({
                   Medical Evaluation for Thinning Hair &amp; Hair Loss Conditions
                 </h1>
                 <p style={{
-                  fontFamily: "'Jost', sans-serif",
+                  fontFamily: "var(--font-jost), sans-serif",
                   fontWeight: 500,
                   fontSize: 25,
                   color: TEXT,
@@ -356,7 +356,7 @@ export default function PaHairLP({
                   Discover the cause of your hair loss and learn which treatment options fit your goals and hair biology.
                 </p>
                 <p style={{
-                  fontFamily: "'Jost', sans-serif",
+                  fontFamily: "var(--font-jost), sans-serif",
                   fontWeight: 400,
                   fontSize: 18,
                   color: TEXT,
@@ -378,7 +378,7 @@ export default function PaHairLP({
                   boxShadow: '10px 10px 10.1px rgba(0,0,0,0.32)',
                 }}>
                   <p style={{
-                    fontFamily: "'Jost', sans-serif",
+                    fontFamily: "var(--font-jost), sans-serif",
                     fontWeight: 500,
                     fontSize: 22,
                     color: '#1a1a1a',
@@ -399,11 +399,15 @@ export default function PaHairLP({
             layered on top so the terrace shows through around him. Sits entirely below the text
             panel above, so nothing dark ever overlaps the photo. */}
         <div className="pah-hero-photo" style={{ position: 'relative', minHeight: 380, overflow: 'hidden' }}>
-          <img
+          <Image
             src="/hero-photo-bg.jpg"
             alt=""
             aria-hidden="true"
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }}
+            fill
+            priority
+            quality={80}
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center center' }}
           />
           <Image
             src="/hero-doctor-cutout.png"
@@ -435,7 +439,7 @@ export default function PaHairLP({
           }}>
             <img src="/stars-rating.png" alt="5 star rating" style={{ height: 30, width: 'auto', flexShrink: 0 }} />
             <p style={{
-              fontFamily: "'Jost', sans-serif",
+              fontFamily: "var(--font-jost), sans-serif",
               fontWeight: 600,
               fontSize: 16,
               color: WHITE,
@@ -453,7 +457,7 @@ export default function PaHairLP({
       <section className="pah-pad" style={{ background: WHITE, padding: '72px 48px 48px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <h2 className="pah-h2-xl" style={{
-            fontFamily: "'Cormorant Infant', Georgia, serif",
+            fontFamily: "var(--font-cormorant), Georgia, serif",
             fontWeight: 700,
             fontSize: 40,
             textTransform: 'uppercase' as const,
@@ -465,7 +469,7 @@ export default function PaHairLP({
             Your Hair Loss Plan Is Just Four Steps Away
           </h2>
           <p style={{
-            fontFamily: "'Jost', sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontWeight: 500,
             fontSize: 20,
             color: TEXT,
@@ -501,7 +505,7 @@ export default function PaHairLP({
               >
                 <IconCircle>{step.icon}</IconCircle>
                 <h3 style={{
-                  fontFamily: "'Jost', sans-serif",
+                  fontFamily: "var(--font-jost), sans-serif",
                   fontWeight: 700,
                   fontSize: 18,
                   color: DARK,
@@ -512,7 +516,7 @@ export default function PaHairLP({
                 }}>
                   {step.title}
                 </h3>
-                <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 15, color: '#555', margin: 0, lineHeight: 1.5 }}>
+                <p style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: 15, color: '#555', margin: 0, lineHeight: 1.5 }}>
                   {step.text}
                 </p>
               </div>
@@ -520,7 +524,7 @@ export default function PaHairLP({
           </div>
 
           <p style={{
-            fontFamily: "'Jost', sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontWeight: 400,
             fontSize: 18,
             color: TEXT,
@@ -531,7 +535,7 @@ export default function PaHairLP({
             No pressure. No obligation. Just honest answers about your options.
           </p>
           <p style={{
-            fontFamily: "'Jost', sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontWeight: 400,
             fontSize: 16,
             color: '#777',
@@ -548,7 +552,7 @@ export default function PaHairLP({
                 display: 'inline-block',
                 background: ORANGE,
                 color: '#000',
-                fontFamily: "'Roboto', sans-serif",
+                fontFamily: "var(--font-roboto), sans-serif",
                 fontWeight: 500,
                 fontSize: 18,
                 textTransform: 'uppercase' as const,
@@ -561,7 +565,7 @@ export default function PaHairLP({
             </a>
           </div>
           <p style={{
-            fontFamily: "'Jost', sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontWeight: 400,
             fontSize: 16,
             color: '#777',
@@ -578,7 +582,7 @@ export default function PaHairLP({
       <section className="pah-pad" style={{ background: PANEL, padding: '80px 48px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <h2 className="pah-h2-xl" style={{
-            fontFamily: "'Cormorant Infant', Georgia, serif",
+            fontFamily: "var(--font-cormorant), Georgia, serif",
             fontWeight: 700,
             fontSize: 40,
             textTransform: 'uppercase' as const,
@@ -590,7 +594,7 @@ export default function PaHairLP({
             Why Patients Feel Confident Choosing Our Team - and Why You Can Too
           </h2>
           <p style={{
-            fontFamily: "'Jost', sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontWeight: 500,
             fontSize: 20,
             color: TEXT,
@@ -622,8 +626,8 @@ export default function PaHairLP({
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
                 <CheckBadge />
                 <div>
-                  <h3 style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: 20, color: DARK, margin: '0 0 4px' }}>{item.title}</h3>
-                  <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 15, color: '#444', margin: 0, lineHeight: 1.5 }}>{item.text}</p>
+                  <h3 style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 700, fontSize: 20, color: DARK, margin: '0 0 4px' }}>{item.title}</h3>
+                  <p style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: 15, color: '#444', margin: 0, lineHeight: 1.5 }}>{item.text}</p>
                 </div>
               </div>
             ))}
@@ -635,7 +639,7 @@ export default function PaHairLP({
               style={{
                 background: ORANGE,
                 color: '#000',
-                fontFamily: "'Roboto', sans-serif",
+                fontFamily: "var(--font-roboto), sans-serif",
                 fontWeight: 500,
                 fontSize: 18,
                 textTransform: 'uppercase' as const,
@@ -653,7 +657,7 @@ export default function PaHairLP({
                 background: 'transparent',
                 border: `2px solid ${TEXT}`,
                 color: TEXT,
-                fontFamily: "'Roboto', sans-serif",
+                fontFamily: "var(--font-roboto), sans-serif",
                 fontWeight: 500,
                 fontSize: 18,
                 textTransform: 'uppercase' as const,
@@ -690,7 +694,7 @@ export default function PaHairLP({
             {/* Text — RIGHT */}
             <div>
               <h2 className="pah-h2-xl" style={{
-                fontFamily: "'Cormorant Infant', Georgia, serif",
+                fontFamily: "var(--font-cormorant), Georgia, serif",
                 fontWeight: 700,
                 fontSize: 36,
                 textTransform: 'uppercase' as const,
@@ -701,7 +705,7 @@ export default function PaHairLP({
                 Meet Dr. Nish Patel: Specialist in Hair Loss Evaluation &amp; Treatment Planning
               </h2>
               <p style={{
-                fontFamily: "'Jost', sans-serif",
+                fontFamily: "var(--font-jost), sans-serif",
                 fontWeight: 500,
                 fontSize: 22,
                 color: TEXT,
@@ -710,13 +714,13 @@ export default function PaHairLP({
               }}>
                 Verified patient experiences from real consultations and care.
               </p>
-              <p style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 20 }}>
+              <p style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 20 }}>
                 Dr. Nish Patel is a licensed physician with a background in family medicine and extensive experience in clinical evaluation and patient care. He earned his Bachelor of Science in Biochemistry from Temple University and his medical degree from NOVA Southeastern College of Osteopathic Medicine. He completed his residency training at Arnot Ogden Medical Center.
               </p>
-              <p style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 20 }}>
+              <p style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 20 }}>
                 Dr. Patel&apos;s medical experience includes years of hands-on patient assessment, diagnosis, and care coordination. In his current practice, he focuses on the evaluation of hair loss conditions and works closely with patients to understand contributing factors such as medical history, genetics, and overall health.
               </p>
-              <p style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 36 }}>
+              <p style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 36 }}>
                 At Hair Restoration of Lehigh Valley, Dr. Patel emphasizes a thoughtful, individualized approach to hair loss care. Each patient evaluation is designed to provide clear information, address questions, and support informed decision-making based on personal needs and goals. His focus is on patient education, transparency, and medically appropriate care planning.
               </p>
               <a
@@ -725,7 +729,7 @@ export default function PaHairLP({
                   display: 'inline-block',
                   background: ORANGE,
                   color: '#000',
-                  fontFamily: "'Roboto', sans-serif",
+                  fontFamily: "var(--font-roboto), sans-serif",
                   fontWeight: 500,
                   fontSize: 18,
                   textTransform: 'uppercase' as const,
@@ -746,7 +750,7 @@ export default function PaHairLP({
       <section className="pah-pad" style={{ background: PANEL, padding: '80px 48px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <h2 className="pah-h2-xl" style={{
-            fontFamily: "'Cormorant Infant', Georgia, serif",
+            fontFamily: "var(--font-cormorant), Georgia, serif",
             fontWeight: 700,
             fontSize: 40,
             textTransform: 'uppercase' as const,
@@ -758,7 +762,7 @@ export default function PaHairLP({
             Real Patients. Real Experiences.
           </h2>
           <p style={{
-            fontFamily: "'Jost', sans-serif",
+            fontFamily: "var(--font-jost), sans-serif",
             fontWeight: 500,
             fontSize: 20,
             color: TEXT,
@@ -796,10 +800,10 @@ export default function PaHairLP({
                 }}
               >
                 <img src="/quote-icon.png" alt="" aria-hidden="true" style={{ width: 32, height: 'auto' }} />
-                <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 14, lineHeight: 1.75, color: '#444', flex: 1 }}>{review.text}</p>
+                <p style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: 14, lineHeight: 1.75, color: '#444', flex: 1 }}>{review.text}</p>
                 <div>
                   <StarRow />
-                  <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 13, fontWeight: 700, color: DARK, marginTop: 8 }}>- {review.name}</p>
+                  <p style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: 13, fontWeight: 700, color: DARK, marginTop: 8 }}>- {review.name}</p>
                 </div>
               </div>
             ))}
@@ -814,7 +818,7 @@ export default function PaHairLP({
           {/* Left — text content */}
           <div className="pah-fin-left" style={{ display: 'flex', flexDirection: 'column' }}>
             <h2 className="pah-h2-lg" style={{
-              fontFamily: "'Cormorant Infant', Georgia, serif",
+              fontFamily: "var(--font-cormorant), Georgia, serif",
               fontWeight: 700,
               fontSize: 36,
               textTransform: 'uppercase' as const,
@@ -826,7 +830,7 @@ export default function PaHairLP({
               <span style={{ color: DARK }}>More Affordable Than You Think</span>
             </h2>
             <p style={{
-              fontFamily: "'Jost', sans-serif",
+              fontFamily: "var(--font-jost), sans-serif",
               fontWeight: 500,
               fontSize: 22,
               color: TEXT,
@@ -837,7 +841,7 @@ export default function PaHairLP({
             </p>
             <div style={{ marginBottom: 32 }}>
               <p style={{
-                fontFamily: "'Jost', sans-serif",
+                fontFamily: "var(--font-jost), sans-serif",
                 fontWeight: 500,
                 fontSize: 22,
                 color: TEXT,
@@ -845,7 +849,7 @@ export default function PaHairLP({
                 marginBottom: 4,
               }}>As low as</p>
               <p className="pah-price-big" style={{
-                fontFamily: "'Lato', sans-serif",
+                fontFamily: "var(--font-lato), sans-serif",
                 fontWeight: 900,
                 fontSize: 66,
                 color: DARK,
@@ -861,7 +865,7 @@ export default function PaHairLP({
               padding: '32px 40px',
             }}>
               <p style={{
-                fontFamily: "'Jost', sans-serif",
+                fontFamily: "var(--font-jost), sans-serif",
                 fontWeight: 500,
                 fontSize: 22,
                 color: TEXT,
@@ -871,7 +875,7 @@ export default function PaHairLP({
                 Fast, simple payment plans
               </p>
               <p style={{
-                fontFamily: "'Roboto', sans-serif",
+                fontFamily: "var(--font-roboto), sans-serif",
                 fontWeight: 400,
                 fontSize: 12,
                 color: '#000000',
@@ -886,7 +890,7 @@ export default function PaHairLP({
                   display: 'inline-block',
                   background: ORANGE,
                   color: '#000',
-                  fontFamily: "'Roboto', sans-serif",
+                  fontFamily: "var(--font-roboto), sans-serif",
                   fontWeight: 500,
                   fontSize: 18,
                   textTransform: 'uppercase' as const,
@@ -920,7 +924,7 @@ export default function PaHairLP({
       <section className="pah-pad" style={{ background: WHITE, padding: '80px 48px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <h2 className="pah-h2-xl" style={{
-            fontFamily: "'Cormorant Infant', Georgia, serif",
+            fontFamily: "var(--font-cormorant), Georgia, serif",
             fontWeight: 700,
             fontSize: 40,
             textTransform: 'uppercase' as const,
@@ -931,7 +935,7 @@ export default function PaHairLP({
           }}>
             Why Patients Feel Confident Choosing Our Team
           </h2>
-          <p style={{ fontFamily: "'Jost', sans-serif", fontSize: 18, color: '#666', marginBottom: 52, lineHeight: 1.5, textAlign: 'center' }}>
+          <p style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: 18, color: '#666', marginBottom: 52, lineHeight: 1.5, textAlign: 'center' }}>
             Real capabilities. Real safety. Real patient-first care.
           </p>
           <div className="pah-commit-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }}>
@@ -973,7 +977,7 @@ export default function PaHairLP({
                 border: '1px solid #dce8e5',
               }}>
                 <div style={{ marginBottom: 20 }}>{col.icon}</div>
-                <h3 style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: 18, color: DARK, marginBottom: 18 }}>
+                <h3 style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 700, fontSize: 18, color: DARK, marginBottom: 18 }}>
                   {col.title}
                 </h3>
                 <ul style={{ paddingLeft: 0, listStyle: 'none', margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -1020,7 +1024,7 @@ export default function PaHairLP({
                 padding: '12px 20px',
               }}>
                 <p style={{
-                  fontFamily: "'Roboto', sans-serif",
+                  fontFamily: "var(--font-roboto), sans-serif",
                   fontWeight: 500,
                   fontSize: 15,
                   color: '#2c2e2b',
@@ -1052,7 +1056,7 @@ export default function PaHairLP({
                 <path d="M20.3 16.9L17.6 14.2C16.8 13.4 15.5 13.4 14.7 14.2L13.3 15.6C12.8 16.1 12 16.1 11.5 15.7C10.2 14.8 9 13.7 7.9 12.5C6.8 11.4 5.8 10.2 4.9 8.9C4.5 8.4 4.5 7.6 5 7.1L6.4 5.7C7.2 4.9 7.2 3.6 6.4 2.8L3.7 0.1C2.9-0.7 1.6-0.7 0.8 0.1L0.1 0.8C-1.4 2.3 0.4 7.5 5.8 12.8C11.1 18.1 16.3 19.8 17.8 18.3L18.5 17.6C19.3 16.9 19.3 15.7 18.5 14.9L20.3 16.9Z" fill={DARK}/>
               </svg>
               <span style={{
-                fontFamily: "'Roboto', sans-serif",
+                fontFamily: "var(--font-roboto), sans-serif",
                 fontWeight: 700,
                 fontSize: 25,
                 color: DARK,
@@ -1064,10 +1068,10 @@ export default function PaHairLP({
                 <path d="M9 0C4 0 0 4 0 9C0 15.8 9 29 9 29C9 29 18 15.8 18 9C18 4 14 0 9 0ZM9 12C7.3 12 6 10.7 6 9C6 7.3 7.3 6 9 6C10.7 6 12 7.3 12 9C12 10.7 10.7 12 9 12Z" fill={DARK}/>
               </svg>
               <div>
-                <p style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: 18, color: DARK, lineHeight: 'normal', margin: 0 }}>
+                <p style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 700, fontSize: 18, color: DARK, lineHeight: 'normal', margin: 0 }}>
                   Hair Restoration of Lehigh Valley
                 </p>
-                <p style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 400, fontSize: 16, color: '#2c2e2b', lineHeight: 'normal', margin: 0 }}>
+                <p style={{ fontFamily: "var(--font-roboto), sans-serif", fontWeight: 400, fontSize: 16, color: '#2c2e2b', lineHeight: 'normal', margin: 0 }}>
                   42A S. 3rd St. Suite 201, Easton, PA 18042
                 </p>
               </div>
@@ -1079,7 +1083,7 @@ export default function PaHairLP({
         {/* Copyright bar */}
         <div className="pah-footer-bar" style={{ textAlign: 'center', padding: '20px 48px 32px' }}>
           <p style={{
-            fontFamily: "'Roboto', sans-serif",
+            fontFamily: "var(--font-roboto), sans-serif",
             fontWeight: 400,
             fontSize: 14,
             color: '#2c2e2b',

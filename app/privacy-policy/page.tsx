@@ -13,7 +13,7 @@ const TEXT   = '#2c2e2b'
 
 export default function PrivacyPolicyPage() {
   return (
-    <div style={{ fontFamily: "'Jost', 'Open Sans', sans-serif", color: TEXT, background: WHITE }}>
+    <div style={{ fontFamily: "var(--font-jost), 'Open Sans', sans-serif", color: TEXT, background: WHITE }}>
 
       {/* Header */}
       <header style={{ background: WHITE, padding: '20px 64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0px 4px 22.7px 0px rgba(0,0,0,0.45)' }}>
@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
         <a href="tel:4842762638" style={{
           border: '2px solid #2e2f2a',
           color: '#2e2f2a',
-          fontFamily: "'Roboto', sans-serif",
+          fontFamily: "var(--font-roboto), sans-serif",
           fontWeight: 700,
           fontSize: 18,
           textTransform: 'uppercase' as const,
@@ -36,7 +36,7 @@ export default function PrivacyPolicyPage() {
 
       {/* Banner */}
       <div style={{ background: PANEL, padding: '56px 48px', textAlign: 'center' }}>
-        <h1 style={{ fontFamily: "'Cormorant Infant', Georgia, serif", fontWeight: 700, color: DARK, fontSize: 40, textTransform: 'uppercase' as const, margin: 0, lineHeight: 1.129 }}>Privacy Policy</h1>
+        <h1 style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontWeight: 700, color: DARK, fontSize: 40, textTransform: 'uppercase' as const, margin: 0, lineHeight: 1.129 }}>Privacy Policy</h1>
       </div>
 
       {/* Content */}
@@ -167,7 +167,7 @@ export default function PrivacyPolicyPage() {
       {/* Copyright bar */}
       <div style={{ background: PANEL, textAlign: 'center', padding: '20px 48px' }}>
         <p style={{
-          fontFamily: "'Roboto', sans-serif",
+          fontFamily: "var(--font-roboto), sans-serif",
           fontWeight: 400,
           fontSize: 14,
           color: '#2c2e2b',
@@ -188,7 +188,7 @@ const PIN = { fontSize: 15, lineHeight: 1.8, color: '#2c2e2b', marginBottom: 14 
 function Heading({ children }: { children: React.ReactNode }) {
   return (
     <h2 style={{
-      fontFamily: "'Jost', sans-serif",
+      fontFamily: "var(--font-jost), sans-serif",
       fontWeight: 700,
       fontSize: 26,
       color: ORANGE,
@@ -203,7 +203,7 @@ function Heading({ children }: { children: React.ReactNode }) {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section style={{ marginBottom: 40 }}>
-      <h2 style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: 22, color: ORANGE, textTransform: 'uppercase' as const, marginBottom: 16 }}>
+      <h2 style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 700, fontSize: 22, color: ORANGE, textTransform: 'uppercase' as const, marginBottom: 16 }}>
         {title}
       </h2>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -216,7 +216,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function Sub({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div style={{ marginBottom: 16 }}>
-      <h3 style={{ fontFamily: "'Jost', sans-serif", fontSize: 16, fontWeight: 600, color: '#2a2a34', marginBottom: 10, marginTop: 8 }}>{title}</h3>
+      <h3 style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: 16, fontWeight: 600, color: '#2a2a34', marginBottom: 10, marginTop: 8 }}>{title}</h3>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>{children}</div>
     </div>
   )

@@ -2,6 +2,7 @@ import DniSwap from '@/components/DniSwap'
 import Fab from '@/components/fab/Fab'
 import GtmTags from '@/components/GtmTags'
 import MetaPixel from '@/components/MetaPixel'
+import { cormorantInfant, jost, roboto, lato } from './fonts'
 import './globals.css'
 
 export const metadata = {
@@ -16,18 +17,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${cormorantInfant.variable} ${jost.variable} ${roboto.variable} ${lato.variable}`}
+    >
       <head>
-        {/* Fonts were previously loaded via @import in globals.css, which forces
-            a serial fetch chain (HTML -> CSS -> @import CSS -> font files) that
-            blocks first paint. Preconnect + a direct <link> lets the browser
-            discover and fetch these in parallel with everything else in <head>. */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;700&family=Jost:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Lato:wght@700;900&display=swap"
-        />
+        {/* Fonts were previously loaded via a Google Fonts <link>, which still costs an
+            external round-trip and doesn't reserve layout space, causing swap-in reflow
+            (CLS). next/font (imported above) self-hosts these same families at build
+            time and generates fallback fonts with matched metrics, removing both the
+            network request and the reflow. */}
         {/* GTM + Meta Pixel are route-gated client components: both return null
             on the /m/ paid-social medical pages so no client-side tracking
             (pixel or GA4) loads there — HIPAA carve-out H-26 / §6 FM7. Every
