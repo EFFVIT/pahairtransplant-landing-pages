@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import LehighMetaLP from '@/components/LehighMetaLP'
+import MedicalBusinessSchema from '@/components/MedicalBusinessSchema'
 
 export const metadata: Metadata = {
   openGraph: { images: [{ url: 'https://more.pahairtransplant.com/og/m-meta.webp', width: 1200, height: 630, alt: 'See if hair restoration is right for you — Hair Restoration of Lehigh Valley' }] },
@@ -10,9 +11,12 @@ export const metadata: Metadata = {
 
 export default function MetaPage() {
   return (
-    <LehighMetaLP
-      heroFormId="xvDUpfWj3iSlkemVjs4z"
-      bottomFormId="qykhwtXnl00YVSY2zhC7"
-    />
+    <>
+      <MedicalBusinessSchema />
+      <LehighMetaLP
+        heroFormId="xvDUpfWj3iSlkemVjs4z"
+        bottomFormId="qykhwtXnl00YVSY2zhC7"
+      />
+    </>
   )
 }
