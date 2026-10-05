@@ -275,10 +275,15 @@ export default function PaHairLP({
         zIndex: 100,
         boxShadow: '0px 4px 22.7px 0px rgba(0,0,0,0.45)',
       }}>
-        <img
+        {/* Source is 1860x368 (73KB); rendered 64px tall (56px on mobile). */}
+        <Image
           src="/logo-pa.webp"
           alt="Hair Restoration of Lehigh Valley"
           className="pah-nav-logo"
+          width={1860}
+          height={368}
+          priority
+          sizes="(max-width: 768px) 283px, 324px"
           style={{ height: 64, width: 'auto', display: 'block' }}
         />
         <div className="pah-nav-btns" style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
@@ -388,7 +393,9 @@ export default function PaHairLP({
                   }}>
                     Request Your Evaluation
                   </p>
-                  <GhlForm formId={heroFormId} height={400} formName="Request Your Hair Consultation - Hair Restoration Google" />
+                  {/* Heights are the form's measured rendered height per breakpoint
+                      (desktop 619 / tablet 569 / phone 695) — see GhlForm. */}
+                  <GhlForm formId={heroFormId} height={620} tabletHeight={570} mobileHeight={700} formName="Request Your Hair Consultation - Hair Restoration Google" />
                 </div>
               </div>
             </div>
@@ -398,14 +405,15 @@ export default function PaHairLP({
         {/* Photo block - real terrace background photo, with the doctor cutout (transparent PNG)
             layered on top so the terrace shows through around him. Sits entirely below the text
             panel above, so nothing dark ever overlaps the photo. */}
+        {/* This block starts below the form card, i.e. below the first screen on
+            phones, so its images are not preloaded at high priority: that only
+            took bandwidth from the fonts and scripts the first screen needs. */}
         <div className="pah-hero-photo" style={{ position: 'relative', minHeight: 380, overflow: 'hidden' }}>
           <Image
             src="/hero-photo-bg.jpg"
             alt=""
             aria-hidden="true"
             fill
-            priority
-            fetchPriority="high"
             quality={80}
             sizes="100vw"
             style={{ objectFit: 'cover', objectPosition: 'center center' }}
@@ -416,8 +424,6 @@ export default function PaHairLP({
             aria-hidden="true"
             className="pah-hero-doctor"
             fill
-            priority
-            fetchPriority="high"
             quality={80}
             sizes="100vw"
             style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
@@ -1039,7 +1045,10 @@ export default function PaHairLP({
 
             {/* Form — RIGHT */}
             <div className="pah-form-col">
-              <GhlForm formId={bottomFormId} height={496} formName="Footer Form -  Hair Restoration Google" />
+              {/* Deliberately not loading="lazy": form_embed.js skips iframes that
+                  haven't loaded when it runs, so a lazy footer form gets no
+                  attribution bridge or resizing (verified 86bbmxw6p). */}
+              <GhlForm formId={bottomFormId} height={600} tabletHeight={575} mobileHeight={705} formName="Footer Form -  Hair Restoration Google" />
             </div>
 
           </div>

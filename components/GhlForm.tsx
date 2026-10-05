@@ -31,6 +31,15 @@ import { onIdle } from '@/lib/onIdle'
 // Hidden-field aliasing (H-27): GHL silently discards any param without a
 // matching hidden field on the form. The gclid field was created with key
 // `gclid-of`, so the plain `?gclid=` never matches — all spellings are sent.
+//
+// LAYOUT SLOT (86bbmxw6p). When form_embed.js re-parents the iframe into its
+// wrapper, the iframe briefly takes no space, then iframe-resizer grows it to
+// the form's real height (~700px on a phone, not the 400px reserved). Measured
+// live: the hero card collapsed 501px -> 101px, pulling the hero photo up into
+// the viewport, where it painted late and became the LCP (8-11s), then got
+// pushed back down (CLS ~0.1). The iframe now sits in a slot whose min-height
+// is the form's measured rendered height per breakpoint, so neither the
+// re-parent nor the resize moves anything around it.
 // ─────────────────────────────────────────────────────────────────────────────
 
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
@@ -65,11 +74,18 @@ function injectFormEmbedOnce() {
 export default function GhlForm({
   formId,
   height = 620,
+  tabletHeight = height,
+  mobileHeight = height,
   formName = '',
   host = DEFAULT_HOST,
 }: {
   formId: string
+  /** Rendered form height above 768px. */
   height?: number
+  /** Rendered form height at 481-768px. */
+  tabletHeight?: number
+  /** Rendered form height at 480px and below. */
+  mobileHeight?: number
   formName?: string
   host?: string
 }) {
@@ -107,28 +123,37 @@ export default function GhlForm({
     if (src) injectFormEmbedOnce()
   }, [src])
 
-  // Reserve the space so resolving params does not shift the page.
-  if (!src) {
-    return <div style={{ width: '100%', height: `${height}px` }} aria-hidden="true" />
-  }
+  // The slot reserves the form's rendered height from first paint, through
+  // param resolution, the form_embed.js re-parent and the iframe-resizer pass.
+  const slotStyle = {
+    width: '100%',
+    '--ghl-h': `${height}px`,
+    '--ghl-h-t': `${tabletHeight}px`,
+    '--ghl-h-m': `${mobileHeight}px`,
+  } as React.CSSProperties
 
   return (
-    <iframe
-      src={src}
-      style={{ width: '100%', height: `${height}px`, border: 'none', borderRadius: '0px', display: 'block' }}
-      id={iframeId}
-      data-layout='{"id":"INLINE"}'
-      data-trigger-type="alwaysShow"
-      data-trigger-value=""
-      data-activation-type="alwaysActivated"
-      data-activation-value=""
-      data-deactivation-type="neverDeactivate"
-      data-deactivation-value=""
-      data-form-name={formName}
-      data-height={height}
-      data-layout-iframe-id={iframeId}
-      data-form-id={formId}
-      title={formName || formId}
-    />
+    <div className="ghl-slot" style={slotStyle}>
+      {src && (
+        <iframe
+          src={src}
+          style={{ width: '100%', border: 'none', borderRadius: '0px', display: 'block' }}
+          className="ghl-frame"
+          id={iframeId}
+          data-layout='{"id":"INLINE"}'
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name={formName}
+          data-height={height}
+          data-layout-iframe-id={iframeId}
+          data-form-id={formId}
+          title={formName || formId}
+        />
+      )}
+    </div>
   )
 }

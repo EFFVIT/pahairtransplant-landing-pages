@@ -4,6 +4,21 @@ body { background: #fff; color: #111; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; }
 
+/* ═══ GHL form slot (components/GhlForm.tsx) ═══
+   min-height on the slot holds the space while form_embed.js re-parents the
+   iframe; the iframe's starting height matches so nothing moves before
+   iframe-resizer sets the exact inline height. */
+.ghl-slot  { min-height: var(--ghl-h); }
+.ghl-frame { height: var(--ghl-h); }
+@media (max-width: 768px) {
+  .ghl-slot  { min-height: var(--ghl-h-t); }
+  .ghl-frame { height: var(--ghl-h-t); }
+}
+@media (max-width: 480px) {
+  .ghl-slot  { min-height: var(--ghl-h-m); }
+  .ghl-frame { height: var(--ghl-h-m); }
+}
+
 /* ═══ PaHairLP – Responsive Overrides ═══ */
 
 @media (max-width: 768px) {
