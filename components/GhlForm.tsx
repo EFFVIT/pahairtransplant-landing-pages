@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { onIdle } from '@/lib/onIdle'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -40,6 +40,15 @@ import { onIdle } from '@/lib/onIdle'
 // pushed back down (CLS ~0.1). The iframe now sits in a slot whose min-height
 // is the form's measured rendered height per breakpoint, so neither the
 // re-parent nor the resize moves anything around it.
+//
+// LAZY (86bbmxw6p). Each GHL widget costs ~2-3s of main-thread CPU on a
+// throttled phone, which alone breaks TBT. A below-the-fold form passes
+// `lazy`: its iframe is not created until the slot nears the viewport
+// (IntersectionObserver), while the slot keeps reserving the height so CLS
+// stays fixed. A form mounted after form_embed.js has run is still bridged:
+// its `iframeLoaded` message re-runs form_embed's init, and the widget pulls
+// the parent URL/params through `fetch-query-params`, which resolves any form
+// iframe on the page.
 // ─────────────────────────────────────────────────────────────────────────────
 
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
@@ -52,6 +61,10 @@ const FORM_EMBED_SRC = 'https://link.msgsndr.com/js/form_embed.js'
 // white-labelled host instead. form_embed.js talks to the iframe by
 // contentWindow.postMessage(msg, '*'), so a non-default host still works.
 const DEFAULT_HOST = 'api.leadconnectorhq.com'
+
+// How far ahead of the viewport a lazy form starts loading, so the widget is
+// usually painted by the time the visitor reaches it.
+const LAZY_ROOT_MARGIN = '400px 0px'
 
 // form_embed.js processes every form iframe present when it runs, so one
 // injection covers a page with several forms. Components mount in the same
@@ -78,6 +91,7 @@ export default function GhlForm({
   mobileHeight = height,
   formName = '',
   host = DEFAULT_HOST,
+  lazy = false,
 }: {
   formId: string
   /** Rendered form height above 768px. */
@@ -88,13 +102,29 @@ export default function GhlForm({
   mobileHeight?: number
   formName?: string
   host?: string
+  /** Defer the widget until the slot nears the viewport. Below-the-fold forms only. */
+  lazy?: boolean
 }) {
   const widgetBase = `https://${host}/widget/form`
   // null until params are resolved — the iframe does not render before then.
   const [src, setSrc] = useState<string | null>(null)
+  const [inView, setInView] = useState(!lazy)
+  const slotRef = useRef<HTMLDivElement>(null)
   const iframeId = `inline-${formId}`
 
   useEffect(() => {
+    if (inView) return
+    const slot = slotRef.current
+    if (!slot || !('IntersectionObserver' in window)) { setInView(true); return }
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) { setInView(true); io.disconnect() }
+    }, { rootMargin: LAZY_ROOT_MARGIN })
+    io.observe(slot)
+    return () => io.disconnect()
+  }, [inView])
+
+  useEffect(() => {
+    if (!inView) return
     const urlParams = new URLSearchParams(window.location.search)
     const out = new URLSearchParams()
 
@@ -117,7 +147,7 @@ export default function GhlForm({
 
     const qs = out.toString()
     setSrc(qs ? `${widgetBase}/${formId}?${qs}` : `${widgetBase}/${formId}`)
-  }, [formId, widgetBase])
+  }, [formId, widgetBase, inView])
 
   useEffect(() => {
     if (src) injectFormEmbedOnce()
@@ -133,7 +163,7 @@ export default function GhlForm({
   } as React.CSSProperties
 
   return (
-    <div className="ghl-slot" style={slotStyle}>
+    <div ref={slotRef} className="ghl-slot" style={slotStyle}>
       {src && (
         <iframe
           src={src}
