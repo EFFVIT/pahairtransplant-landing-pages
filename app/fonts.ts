@@ -21,9 +21,12 @@ export const roboto = Roboto({
   variable: '--font-roboto',
 })
 
+// Only used for the financing price ($188/mo, weight 900), far below the fold —
+// not preloaded so it doesn't compete with first-screen fonts.
 export const lato = Lato({
   subsets: ['latin'],
-  weight: ['700', '900'],
+  weight: ['900'],
   display: 'swap',
   variable: '--font-lato',
+  preload: false,
 })
