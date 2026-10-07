@@ -1045,10 +1045,12 @@ export default function PaHairLP({
 
             {/* Form — RIGHT */}
             <div className="pah-form-col">
-              {/* Deliberately not loading="lazy": form_embed.js skips iframes that
-                  haven't loaded when it runs, so a lazy footer form gets no
-                  attribution bridge or resizing (verified 86bbmxw6p). */}
-              <GhlForm formId={bottomFormId} height={600} tabletHeight={575} mobileHeight={705} formName="Footer Form -  Hair Restoration Google" />
+              {/* `lazy`, not loading="lazy": a native-lazy iframe sits unloaded
+                  in the DOM when form_embed.js runs and gets skipped (no
+                  attribution bridge or resizing, verified 86bbmxw6p). `lazy`
+                  creates the iframe only on scroll, and form_embed picks up a
+                  newly added iframe from its iframeLoaded message. */}
+              <GhlForm formId={bottomFormId} height={600} tabletHeight={575} mobileHeight={705} formName="Footer Form -  Hair Restoration Google" lazy />
             </div>
 
           </div>
