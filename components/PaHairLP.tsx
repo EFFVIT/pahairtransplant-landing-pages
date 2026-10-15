@@ -701,7 +701,7 @@ export default function PaHairLP({
                 Meet Dr. Nish Patel
               </h2>
               <p style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 20 }}>
-                Dr. Nish Patel is a licensed physician with a background in family medicine and extensive experience in clinical evaluation and patient care. He earned his Bachelor of Science in Biochemistry from Temple University and his medical degree from NOVA Southeastern College of Osteopathic Medicine. He completed his residency training at Arnot Ogden Medical Center.
+                Dr. Nish Patel is a licensed physician with a background in family medicine and extensive experience in clinical evaluation and patient care. Dr. Nish Patel earned his medical degree from Nova Southeastern College of Osteopathic Medicine and completed his family medicine residency at Arnot Ogden Medical Center. He holds a Bachelor of Science in Biochemistry from Temple University. Before focusing on hair restoration, he practiced as an emergency room physician.
               </p>
               <p style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 20 }}>
                 Dr. Patel&apos;s medical experience includes years of hands-on patient assessment, diagnosis, and care coordination. In his current practice, he focuses on the evaluation of hair loss conditions and works closely with patients to understand contributing factors such as medical history, genetics, and overall health.
