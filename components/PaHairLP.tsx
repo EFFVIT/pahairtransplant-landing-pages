@@ -610,7 +610,7 @@ export default function PaHairLP({
           }}>
             {[
               { title: 'Designed for Your Hair Loss Pattern', text: 'Personalized plans based on your stage, evaluation findings, and goals.' },
-              { title: 'Visible, Measurable Progress', text: 'Track changes over time through follow-up assessments.' },
+              { title: 'Follow-Up Assessments', text: 'Review your plan with your doctor over time.' },
               { title: 'Guidance Focused on Healthy-Looking Hair Over Time', text: 'Recommendations based on proven medical and appearance-supporting approaches.' },
               { title: 'Safe Care. Proven Protocols.', text: 'Strict standards for consistent, high-quality patient care.' },
               { title: 'Tailored to You', text: 'Your plan is based on your evaluation, goals, and long-term hair needs.' },
