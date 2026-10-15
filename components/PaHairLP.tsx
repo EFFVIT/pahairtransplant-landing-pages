@@ -542,17 +542,6 @@ export default function PaHairLP({
           }}>
             No pressure. No obligation. Just honest answers about your options.
           </p>
-          <p style={{
-            fontFamily: "var(--font-jost), sans-serif",
-            fontWeight: 400,
-            fontSize: 16,
-            color: '#777',
-            textAlign: 'center',
-            marginTop: 12,
-            lineHeight: 'normal',
-          }}>
-            You&apos;re in the right place - thousands start here every week.
-          </p>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 32 }}>
             <a
               href="#form"
