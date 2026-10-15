@@ -949,7 +949,7 @@ export default function PaHairLP({
               },
               {
                 icon: <SafetyIcon />,
-                title: 'Safety & Surgical Standards',
+                title: 'Safety & Clinical Standards',
                 items: [
                   'Evidence-based approaches reviewed by licensed medical providers',
                   'Clean, professional clinical environment with medical-grade protocols',
