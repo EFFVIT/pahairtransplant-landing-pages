@@ -928,6 +928,7 @@ export default function PaHairLP({
                   'Personalized care plans built around your goals',
                   'During your visit, you’ll receive a professional evaluation and guidance on managing hair loss, based on established clinical understanding.',
                   'Support for complex cases requiring multi-factor planning',
+                  'Options we may discuss at your consultation include ARTAS® robotic-assisted FUE and NeoGraft®.',
                 ],
               },
               {
