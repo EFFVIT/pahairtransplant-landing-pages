@@ -616,7 +616,6 @@ export default function PaHairLP({
               { title: 'Tailored to You', text: 'Your plan is based on your evaluation, goals, and long-term hair needs.' },
               { title: 'Real patients. Real reviews.', text: 'Real patients. Real reviews. Real experiences.' },
               { title: 'Step-by-Step Guidance', text: 'Know what to expect during your evaluation and throughout your care plan.' },
-              { title: 'Built for Real-Life Confidence', text: 'Feel prepared and confident in your everyday life again.' },
               { title: 'Support When You Need It Most', text: 'Real guidance through your evaluation, recommendations, and every step of your journey.' },
               { title: 'Start with a Free Consultation', text: 'Get answers, options, and a personalized plan - no pressure.' },
             ].map((item, i) => (
