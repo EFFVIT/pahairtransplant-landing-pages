@@ -617,7 +617,7 @@ export default function PaHairLP({
               { title: 'Real patients. Real reviews.', text: 'Real patients. Real reviews. Real experiences.' },
               { title: 'Step-by-Step Guidance', text: 'Know what to expect during your evaluation and throughout your care plan.' },
               { title: 'Support When You Need It Most', text: 'Real guidance through your evaluation, recommendations, and every step of your journey.' },
-              { title: 'Start with a Consultation', text: 'Get answers, options, and a personalized plan - no pressure.' },
+              { title: 'Book A Consultation', text: 'Get answers, options, and a personalized plan - no pressure.' },
             ].map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
                 <CheckBadge />
