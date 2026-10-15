@@ -614,7 +614,7 @@ export default function PaHairLP({
               { title: 'Guidance Focused on Healthy-Looking Hair Over Time', text: 'Recommendations based on established medical approaches.' },
               { title: 'Consistent Standards of Care', text: 'Strict standards for consistent, high-quality patient care.' },
               { title: 'Tailored to You', text: 'Your plan is based on your evaluation, goals, and long-term hair needs.' },
-              { title: 'Real patients. Real reviews.', text: 'Real patients. Real reviews. Real experiences.' },
+              { title: 'Real patients. Real reviews.', text: 'See what patients say about their visit in the reviews below.' },
               { title: 'Step-by-Step Guidance', text: 'Know what to expect during your evaluation and throughout your care plan.' },
               { title: 'Support When You Need It Most', text: 'Real guidance through your evaluation, recommendations, and every step of your journey.' },
               { title: 'Book A Consultation', text: 'Get answers, options, and a personalized plan - no pressure.' },
