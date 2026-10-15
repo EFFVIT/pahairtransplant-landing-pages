@@ -698,7 +698,7 @@ export default function PaHairLP({
                 color: DARK,
                 marginBottom: 16,
               }}>
-                Meet Dr. Nish Patel: Specialist in Hair Loss Evaluation &amp; Treatment Planning
+                Meet Dr. Nish Patel
               </h2>
               <p style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 20 }}>
                 Dr. Nish Patel is a licensed physician with a background in family medicine and extensive experience in clinical evaluation and patient care. He earned his Bachelor of Science in Biochemistry from Temple University and his medical degree from NOVA Southeastern College of Osteopathic Medicine. He completed his residency training at Arnot Ogden Medical Center.
