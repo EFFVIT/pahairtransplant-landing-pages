@@ -617,7 +617,7 @@ export default function PaHairLP({
               { title: 'Real patients. Real reviews.', text: 'See what patients say about their visit in the reviews below.' },
               { title: 'Step-by-Step Guidance', text: 'Know what to expect during your evaluation and throughout your care plan.' },
               { title: 'Support When You Need It Most', text: 'Real guidance through your evaluation, recommendations, and every step of your journey.' },
-              { title: 'Book A Consultation', text: 'Get answers, options, and a personalized plan - no pressure.' },
+              { title: 'Book a Consult', text: 'Get answers, options, and a personalized plan - no pressure.' },
             ].map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
                 <CheckBadge />
@@ -750,7 +750,7 @@ export default function PaHairLP({
             lineHeight: 'normal',
             marginBottom: 48,
           }}>
-            Verified patient experiences shared after their visit.
+            Patient experiences shared after their visit.
           </p>
           <div className="pah-reviews-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
             {[
