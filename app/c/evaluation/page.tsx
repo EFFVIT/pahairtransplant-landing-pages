@@ -3,9 +3,9 @@ import PaHairLP from '@/components/PaHairLP'
 import MedicalBusinessSchema from '@/components/MedicalBusinessSchema'
 
 export const metadata: Metadata = {
-  openGraph: { images: [{ url: "https://more.pahairtransplant.com/og/c-evaluation.webp", width: 1200, height: 630, alt: "Free hair loss evaluation at Hair Restoration of Lehigh Valley" }] },
-  twitter: { card: "summary_large_image", images: ["https://more.pahairtransplant.com/og/c-evaluation.webp"] },
-  title: 'Free Hair Loss Evaluation | Hair Restoration of Lehigh Valley',
+  openGraph: { images: [{ url: "https://more.pahairtransplant.com/og/c-hair-restoration.webp", width: 1200, height: 630, alt: "Hair loss evaluation at Hair Restoration of Lehigh Valley" }] },
+  twitter: { card: "summary_large_image", images: ["https://more.pahairtransplant.com/og/c-hair-restoration.webp"] },
+  title: 'Hair Loss Evaluation | Hair Restoration of Lehigh Valley',
   robots: 'noindex, nofollow',
 }
 

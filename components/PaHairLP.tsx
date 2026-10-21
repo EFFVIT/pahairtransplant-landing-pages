@@ -542,17 +542,6 @@ export default function PaHairLP({
           }}>
             No pressure. No obligation. Just honest answers about your options.
           </p>
-          <p style={{
-            fontFamily: "var(--font-jost), sans-serif",
-            fontWeight: 400,
-            fontSize: 16,
-            color: '#777',
-            textAlign: 'center',
-            marginTop: 12,
-            lineHeight: 'normal',
-          }}>
-            You&apos;re in the right place - thousands start here every week.
-          </p>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 32 }}>
             <a
               href="#form"
@@ -621,15 +610,14 @@ export default function PaHairLP({
           }}>
             {[
               { title: 'Designed for Your Hair Loss Pattern', text: 'Personalized plans based on your stage, evaluation findings, and goals.' },
-              { title: 'Visible, Measurable Progress', text: 'Track changes over time through follow-up assessments.' },
-              { title: 'Guidance Focused on Healthy-Looking Hair Over Time', text: 'Recommendations based on proven medical and appearance-supporting approaches.' },
-              { title: 'Safe Care. Proven Protocols.', text: 'Strict standards for consistent, high-quality patient care.' },
+              { title: 'Follow-Up Assessments', text: 'Review your plan with your doctor over time.' },
+              { title: 'Guidance Focused on Healthy-Looking Hair Over Time', text: 'Recommendations based on established medical approaches.' },
+              { title: 'Consistent Standards of Care', text: 'Strict standards for consistent, high-quality patient care.' },
               { title: 'Tailored to You', text: 'Your plan is based on your evaluation, goals, and long-term hair needs.' },
-              { title: 'Trusted by Thousands', text: 'Real patients. Real reviews. Real experiences.' },
+              { title: 'Real patients. Real reviews.', text: 'See what patients say about their visit in the reviews below.' },
               { title: 'Step-by-Step Guidance', text: 'Know what to expect during your evaluation and throughout your care plan.' },
-              { title: 'Built for Real-Life Confidence', text: 'Feel prepared and confident in your everyday life again.' },
               { title: 'Support When You Need It Most', text: 'Real guidance through your evaluation, recommendations, and every step of your journey.' },
-              { title: 'Start with a Free Consultation', text: 'Get answers, options, and a personalized plan - no pressure.' },
+              { title: 'Book a Consult', text: 'Get answers, options, and a personalized plan - no pressure.' },
             ].map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
                 <CheckBadge />
@@ -710,26 +698,10 @@ export default function PaHairLP({
                 color: DARK,
                 marginBottom: 16,
               }}>
-                Meet Dr. Nish Patel: Specialist in Hair Loss Evaluation &amp; Treatment Planning
+                Meet Dr. Nish Patel
               </h2>
-              <p style={{
-                fontFamily: "var(--font-jost), sans-serif",
-                fontWeight: 500,
-                fontSize: 22,
-                color: TEXT,
-                lineHeight: 'normal',
-                marginBottom: 28,
-              }}>
-                Verified patient experiences from real consultations and care.
-              </p>
-              <p style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 20 }}>
-                Dr. Nish Patel is a licensed physician with a background in family medicine and extensive experience in clinical evaluation and patient care. He earned his Bachelor of Science in Biochemistry from Temple University and his medical degree from NOVA Southeastern College of Osteopathic Medicine. He completed his residency training at Arnot Ogden Medical Center.
-              </p>
-              <p style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 20 }}>
-                Dr. Patel&apos;s medical experience includes years of hands-on patient assessment, diagnosis, and care coordination. In his current practice, he focuses on the evaluation of hair loss conditions and works closely with patients to understand contributing factors such as medical history, genetics, and overall health.
-              </p>
               <p style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: TEXT, marginBottom: 36 }}>
-                At Hair Restoration of Lehigh Valley, Dr. Patel emphasizes a thoughtful, individualized approach to hair loss care. Each patient evaluation is designed to provide clear information, address questions, and support informed decision-making based on personal needs and goals. His focus is on patient education, transparency, and medically appropriate care planning.
+                Dr. Nish Patel earned his medical degree from Nova Southeastern College of Osteopathic Medicine and completed his family medicine residency at Arnot Ogden Medical Center. He holds a Bachelor of Science in Biochemistry from Temple University. Before focusing on hair restoration, he practiced as an emergency room physician.
               </p>
               <a
                 href="#form"
@@ -778,7 +750,7 @@ export default function PaHairLP({
             lineHeight: 'normal',
             marginBottom: 48,
           }}>
-            Verified patient experiences shared after their visit.
+            Patient experiences shared after their visit.
           </p>
           <div className="pah-reviews-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
             {[
@@ -956,11 +928,12 @@ export default function PaHairLP({
                   'Personalized care plans built around your goals',
                   'During your visit, you’ll receive a professional evaluation and guidance on managing hair loss, based on established clinical understanding.',
                   'Support for complex cases requiring multi-factor planning',
+                  'Options we may discuss at your consultation include ARTAS® robotic-assisted FUE and NeoGraft®.',
                 ],
               },
               {
                 icon: <SafetyIcon />,
-                title: 'Safety & Surgical Standards',
+                title: 'Safety & Clinical Standards',
                 items: [
                   'Evidence-based approaches reviewed by licensed medical providers',
                   'Clean, professional clinical environment with medical-grade protocols',
