@@ -2,6 +2,7 @@ import DniSwap from '@/components/DniSwap'
 import Fab from '@/components/fab/Fab'
 import GtmTags from '@/components/GtmTags'
 import MetaPixel from '@/components/MetaPixel'
+import Script from 'next/script'
 import { cormorantInfant, jost, roboto, lato } from './fonts'
 import './globals.css'
 
@@ -37,6 +38,15 @@ export default function RootLayout({
       <body>
         <Fab client="lehigh" />
         <DniSwap />
+        {/* RootLogic chat widget. The FAB's "Chat with us" chip (ghl_chat) opens
+            it through window.leadConnector; without this loader the chip has
+            nothing to open. Not an ad tracker, so it sits outside the H-26 gate. */}
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="677c3974a1644bd5b8e64b85"
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>
